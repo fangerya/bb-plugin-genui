@@ -11,6 +11,8 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 
 ### Fixed
 - `Checklist(options)` — the options list given as the only argument, with the `$state` for the picks left out — used to fail the block twice (`is missing options` + `value must be a state variable`). The same shape across `Choice`, `Radio`, `Select` and `OptionCards` is now rewritten around a fresh state (`Checklist($checklist, […])`) with a warning, and the Source panel shows the corrected call. Anything ambiguous (a second positional argument, a non-list value) keeps its errors.
+- `Tabs` given as one list of `{title, children}` tab cards instead of the parallel `labels` and `children` lists now splits into those two lists with a warning, instead of failing with `is missing children`.
+- An input bound to a state that is never declared — `Input($addr, …)` with no `$addr = …` anywhere, or the bare `Input(addr, …)` spelling — now declares it with the kind's neutral initial (`""`, `[]`, `0`) and a warning, instead of failing the block with `unknown state`.
 
 ## [0.3.2] - 2026-11-07
 
