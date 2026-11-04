@@ -9,6 +9,9 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 ### Added
 - Code, Snippet, Diff, the diffs in Changes, the file excerpts in Findings, StackTrace, Coverage, Acceptance and Provenance, and the Source panel under each block have a **Wrap lines** button, like BB's own file and diff viewers. Long lines scroll until it is turned on; each block remembers its choice.
 
+### Fixed
+- `Checklist(options)` — the options list given as the only argument, with the `$state` for the picks left out — used to fail the block twice (`is missing options` + `value must be a state variable`). The same shape across `Choice`, `Radio`, `Select` and `OptionCards` is now rewritten around a fresh state (`Checklist($checklist, […])`) with a warning, and the Source panel shows the corrected call. Anything ambiguous (a second positional argument, a non-list value) keeps its errors.
+
 ## [0.3.2] - 2026-11-07
 
 ### Fixed
